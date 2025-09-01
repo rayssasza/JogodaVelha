@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha Binário | 0 vs 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="description" content="Jogo da Velha Binário">
+</head>
+<body>
+    <!-- Container principal com tema de programação -->
+    <main class="game-container" role="main">
+        <!-- Cabeçalho com tema binário -->
+        <header class="game-header">
+            <div class="title-container">
+                <h1 class="game-title">
+                    <span class="binary-accent">01</span>
+                    Jogo da Velha
+                    <span class="binary-accent">10</span>
+                </h1>
+                <p class="game-subtitle">Versão Binária • 0 vs 1</p>
+            </div>
+            <div id="current-player-indicator" class="player-indicator" aria-live="polite">
+                <span class="indicator-text">Jogador atual:</span>
+                <span id="current-player-display" class="player-symbol">1</span>
+            </div>
+        </header>
+
+        <!-- Seleção de modo de jogo -->
+        <section id="game-mode-selection" class="mode-selection" aria-labelledby="mode-title">
+            <h2 id="mode-title" class="mode-title">Escolha seu modo de jogo</h2>
+            <div class="mode-buttons">
+                <button 
+                    id="two-players-btn" 
+                    class="mode-button"
+                    aria-describedby="two-players-desc"
+                >
+                    <span class="button-icon">👥</span>
+                    <div class="button-content">
+                        <span class="button-title">Modo Duplo</span>
+                        <span class="button-subtitle">1 vs 0 • Local</span>
+                    </div>
+                </button>
+                <button 
+                    id="ai-player-btn" 
+                    class="mode-button"
+                    aria-describedby="ai-player-desc"
+                >
+                    <span class="button-icon">🤖</span>
+                    <div class="button-content">
+                        <span class="button-title">Vs Algoritmo</span>
+                        <span class="button-subtitle">1 vs IA • Desafio</span>
+                    </div>
+                </button>
+            </div>
+            <div class="mode-descriptions">
+                <p id="two-players-desc" class="mode-description">
+                    <code>O primeiro modo é dois jogadores no mesmo dispositivo</code>
+                </p>
+                <p id="ai-player-desc" class="mode-description">
+                    <code>O segundo modo é contra a inteligência artificial</code>
+                </p>
+            </div>
+        </section>
+
+        <!-- Tabuleiro do jogo -->
+        <section id="game-board-section" class="board-section hidden" aria-labelledby="board-title">
+            <h2 id="board-title" class="sr-only">Tabuleiro binário 3x3</h2>
+            <div class="board-container">
+                <div class="board-grid-labels">
+                    <div class="grid-label top">0 1 2</div>
+                    <div class="grid-label left">0<br>1<br>2</div>
+                </div>
+                <div id="game-board" class="game-board" role="grid" aria-label="Tabuleiro binário 3x3">
+                    <!-- As células serão geradas dinamicamente -->
+                </div>
+            </div>
+            
+            <!-- Controles do jogo -->
+            <div class="game-controls">
+                <button id="new-game-btn" class="control-button secondary">
+                    <span>🔄</span> Nova Execução
+                </button>
+                <button id="change-mode-btn" class="control-button tertiary">
+                    <span>⚙️</span> Trocar Modo
+                </button>
+            </div>
+        </section>
+
+        <!-- Placar do jogo -->
+        <section id="scoreboard-section" class="scoreboard-section hidden" aria-labelledby="score-title">
+            <h2 id="score-title" class="score-title">
+                <span class="code-comment">// Placar do jogo</span>
+            </h2>
+            <div class="scoreboard">
+                <div class="score-item player-1">
+                    <div class="score-header">
+                        <span class="score-symbol">1</span>
+                        <span class="score-label">Player</span>
+                    </div>
+                    <span id="score-1" class="score-value" aria-label="Vitórias do jogador 1">0</span>
+                </div>
+                <div class="score-separator">
+                    <span class="vs-text">vs</span>
+                </div>
+                <div class="score-item player-0">
+                    <div class="score-header">
+                        <span class="score-symbol">0</span>
+                        <span class="score-label">Player</span>
+                    </div>
+                    <span id="score-0" class="score-value" aria-label="Vitórias do jogador 0">0</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de resultado -->
+    <div id="result-modal" class="modal-overlay hidden" role="dialog" aria-labelledby="result-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="result-header">
+                <div class="result-icon" id="result-icon" aria-hidden="true"></div>
+                <div class="binary-animation" id="binary-animation"></div>
+            </div>
+            <h3 id="result-title" class="result-title"></h3>
+            <p id="result-message" class="result-message"></p>
+            <div class="modal-actions">
+                <button id="play-again-btn" class="control-button primary">
+                    <span>▶️</span> Executar Novamente
+                </button>
+                <button id="back-to-menu-btn" class="control-button secondary">
+                    <span>🏠</span> Menu Principal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts modulares -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
